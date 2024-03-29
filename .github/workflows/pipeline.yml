@@ -72,4 +72,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image to Docker Hub
-        run: docker push datnh99/demo-image::$VERSION
+        run: docker push datnh99/demo-image:$VERSION
