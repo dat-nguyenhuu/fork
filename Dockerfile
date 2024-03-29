@@ -2,8 +2,8 @@ FROM openjdk:21-jdk
 
 WORKDIR /app
 
-COPY target/demo-0.1.jar demo-0.1.jar
+COPY target/*.jar app.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "demo-0.1.jar"]
+CMD ["java", "-jar", "app.jar"]
