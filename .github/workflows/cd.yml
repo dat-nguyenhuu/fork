@@ -24,4 +24,6 @@ jobs:
         run: docker run -d -p 8080:8080 datnh99/demo-image:1.0.1
 
       - name: Check
-        run: curl -s http://localhost:8080/demo
+        run: |
+          response=$(curl -s http://localhost:8080/demo)
+          echo "API response: $response"
