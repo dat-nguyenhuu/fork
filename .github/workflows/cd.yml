@@ -23,7 +23,10 @@ jobs:
       - name: Deploy to GitHub environment
         run: docker run -d -p 8080:8080 datnh99/demo-image:1.0.1
 
+      - name: Docker container
+        run: docker ps -a
+
       - name: Check
         run: |
-          response=$(curl -s http://localhost:8080/demo)
+          response=$(curl http://localhost:8080/demo)
           echo "API response: $response"
