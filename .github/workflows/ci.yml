@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: CI/CD Pipeline
+name: ci-pipeline
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
       - name: Run tests
         run: mvn test
 
-  deploy:
+  docker:
     needs: build
     runs-on: ubuntu-latest
 
