@@ -21,17 +21,20 @@ jobs:
         run: docker pull datnh99/demo-image:1.0.1
 
       - name: Deploy to GitHub environment
+        id: run_container
         run: docker run -d -p 8080:8080 datnh99/demo-image:1.0.1
 
       - name: Docker container
         run: docker ps -a
 
-      - name: Docker container ip
+      - name: Wait for container to start
+        run: sleep 10
+
+      - name: Get container IP
+        id: get_ip
         run: |
-          container_ip=$(docker ps -n 1 --format "{{.NetworkSettings.IPAddress}}")
-          echo "container_ip"
+          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${{ steps.run_container.outputs.container_id }})
+          echo "::set-output name=ip::$CONTAINER_IP"
 
       - name: Check
-        run: |
-          container_ip=$(docker ps -n 1 --format "{{.NetworkSettings.IPAddress}}")
-          curl http://$container_ip:8080/demo
+        run: curl http://${{ steps.get_ip.outputs.ip }}:8080/demo
