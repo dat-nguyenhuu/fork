@@ -27,6 +27,4 @@ jobs:
         run: docker ps -a
 
       - name: Check
-        run: |
-          response=$(curl http://localhost:8080/demo)
-          echo "API response: $response"
+        run: curl http://localhost:8080/demo
