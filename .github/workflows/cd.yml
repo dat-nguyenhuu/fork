@@ -21,7 +21,7 @@ jobs:
         run: docker pull datnh99/demo-image:1.0.1
 
       - name: Deploy to GitHub environment
-        run: docker run -d -p 80:80 datnh99/demo-image:1.0.1
+        run: docker run -d -p 8080:8080 datnh99/demo-image:1.0.1
 
       - name: Check
-        run: curl -s http://localhost:80/demo
+        run: curl -s http://localhost:8080/demo
