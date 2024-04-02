@@ -86,3 +86,9 @@ jobs:
         with:
           name: image-info
           path: image-info.txt
+
+      - name: Pull Docker image
+        run: |
+          IMAGE_NAME=$(cat image-info/IMAGE_NAME)
+          IMAGE_VERSION=$(cat image-info/IMAGE_VERSION) 
+          echo "$IMAGE_NAME"
