@@ -23,13 +23,13 @@ jobs:
       - name: Pull Docker image
         run: |
           VERSION=$(cat version.txt)
-          docker pull datnh99/demo-image:$IMAGE_VERSION
+          docker pull datnh99/demo-image:$VERSION
 
       - name: Deploy to GitHub environment
         id: run_container
         run: |
           VERSION=$(cat version.txt)
-          docker run -d -p 8080:8080 datnh99/demo-image:$IMAGE_VERSION
+          docker run -d -p 8080:8080 datnh99/demo-image:$VERSION
 
       - name: Docker container
         run: docker ps -a
