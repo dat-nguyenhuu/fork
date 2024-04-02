@@ -87,9 +87,3 @@ jobs:
         with:
           name: image-info
           path: image-info.txt
-
-      - name: Download image info artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: image-info
-          path: image-info.txt
