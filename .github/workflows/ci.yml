@@ -75,3 +75,14 @@ jobs:
         run: |
           VERSION=$(cat version.txt)
           docker push datnh99/demo-image:$VERSION
+
+      - name: Create image info file
+        run: |
+          echo "IMAGE_NAME=datnh99/demo-image" >> image-info.txt
+          echo "IMAGE_VERSION=1.0.1" >> image-info.txt
+
+      - name: Upload image info artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: image-info
+          path: image-info.txt
