@@ -80,6 +80,7 @@ jobs:
         run: |
           echo "IMAGE_NAME=datnh99/demo-image" >> image-info.txt
           echo "IMAGE_VERSION=1.0.1" >> image-info.txt
+          ls
 
       - name: Upload image info artifact
         uses: actions/upload-artifact@v2
@@ -89,6 +90,6 @@ jobs:
 
       - name: Pull Docker image
         run: |
-          IMAGE_NAME=$(cat image-info/IMAGE_NAME)
-          IMAGE_VERSION=$(cat image-info/IMAGE_VERSION) 
+          IMAGE_NAME=$(cat image-info.txt/IMAGE_NAME)
+          IMAGE_VERSION=$(cat image-info.txt/IMAGE_VERSION) 
           echo "$IMAGE_NAME"
