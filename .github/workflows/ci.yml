@@ -79,6 +79,7 @@ jobs:
       - name: Create image info file
         run: |
           mkdir image-info
+          cd image-info
           echo "IMAGE_NAME=datnh99/demo-image" >> image-info.txt
           echo "IMAGE_VERSION=1.0.1" >> image-info.txt
           ls
