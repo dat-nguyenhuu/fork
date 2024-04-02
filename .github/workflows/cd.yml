@@ -2,6 +2,11 @@ name: cd-pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      image-version:
+        description: 'Image version'
+        required: true
+        default: 'latest'
 
 jobs:
   build-and-deploy:
@@ -18,11 +23,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull Docker image
-        run: docker pull datnh99/demo-image:1.0.1
+        run: docker pull datnh99/demo-image:${{github.event.inputs.version}}
 
       - name: Deploy to GitHub environment
         id: run_container
-        run: docker run -d -p 8080:8080 datnh99/demo-image:1.0.1
+        run: docker run -d -p 8080:8080 datnh99/demo-image:${{github.event.inputs.version}}
 
       - name: Docker container
         run: docker ps -a

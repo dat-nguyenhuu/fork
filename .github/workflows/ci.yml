@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: ci-pipelinee
+name: ci-pipeline
 
 on:
   push:
