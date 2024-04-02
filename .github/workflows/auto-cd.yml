@@ -1,4 +1,4 @@
-name: cd-pipeline
+name: cd-auto-pipeline
 
 on:
   workflow_run:
