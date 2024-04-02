@@ -23,11 +23,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull Docker image
-        run: docker pull datnh99/demo-image:${{github.event.inputs.version}}
+        run: docker pull datnh99/demo-image:${{github.event.inputs.image-version}}
 
       - name: Deploy to GitHub environment
         id: run_container
-        run: docker run -d -p 8080:8080 datnh99/demo-image:${{github.event.inputs.version}}
+        run: docker run -d -p 8080:8080 datnh99/demo-image:${{github.event.inputs.image-version}}
 
       - name: Docker container
         run: docker ps -a
