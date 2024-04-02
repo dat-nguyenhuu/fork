@@ -24,7 +24,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: image-info
-          path: image-info
+          path: image-info.txt
 
       - name: Pull Docker image
         run: |
