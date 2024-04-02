@@ -24,7 +24,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: image-info
-          path: /home/runner/work/demo/demo/image-info.txt
+          path: ${{ github.workspace }}
 
       - name: Pull Docker image
         run: |
