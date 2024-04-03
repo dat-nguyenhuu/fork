@@ -16,6 +16,6 @@ runs:
           MINOR="${VERSION[1]}"
           PATCH="${VERSION[2]}"
           NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
-          echo "-----------------"
+          echo "-----------------: $NEW_TAG"
           echo "::set-output name=new_tag::$NEW_TAG"
       shell: bash
