@@ -1,35 +1,35 @@
-name: cd-auto-pipeline
-
-on:
-  workflow_run:
-    workflows: [ "ci-pipeline" ]
-    types:
-      - completed
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Pull Docker image
-        run: |
-          VERSION=$(cat version.txt)
-          docker pull datnh99/demo-image:$VERSION
-
-      - name: Deploy to GitHub environment
-        id: run_container
-        run: |
-          VERSION=$(cat version.txt)
-          docker run -d -p 8080:8080 datnh99/demo-image:$VERSION
-
-      - name: Docker container
-        run: docker ps -a
+#name: cd-auto-pipeline
+#
+#on:
+#  workflow_run:
+#    workflows: [ "ci-pipeline" ]
+#    types:
+#      - completed
+#
+#jobs:
+#  build-and-deploy:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Login to Docker Hub
+#        uses: docker/login-action@v1
+#        with:
+#          username: ${{ secrets.DOCKER_USERNAME }}
+#          password: ${{ secrets.DOCKER_PASSWORD }}
+#
+#      - name: Pull Docker image
+#        run: |
+#          VERSION=$(cat version.txt)
+#          docker pull datnh99/demo-image:$VERSION
+#
+#      - name: Deploy to GitHub environment
+#        id: run_container
+#        run: |
+#          VERSION=$(cat version.txt)
+#          docker run -d -p 8080:8080 datnh99/demo-image:$VERSION
+#
+#      - name: Docker container
+#        run: docker ps -a
