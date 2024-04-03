@@ -4,9 +4,8 @@ outputs:
   docker-version:
     description: 'The new docker version'
     value: ${{ steps.generate-new-tag.outputs.new_tag }}
-    default: 'latest'
 runs:
-  using: 'composite'
+  using: 'shell'
   steps:
     - name: Generate docker image version
       id: generate-new-tag
