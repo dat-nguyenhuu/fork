@@ -12,7 +12,7 @@ runs:
       run: |
         LATEST_TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/datnh99/demo-image/tags/?page_size=1" | jq -r '.results[0].name')
         if [[ -z "$LATEST_TAG" ]] ||  [[ "$LATEST_TAG" == "null" ]]; then
-          LATEST_TAG="1.0.1"
+          LATEST_TAG="1.0.2"
         fi
         echo "new-tag=$LATEST_TAG" >> $GITHUB_OUTPUT
       shell: bash
