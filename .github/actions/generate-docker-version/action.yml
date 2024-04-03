@@ -18,3 +18,4 @@ runs:
           NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
           echo "-----------------"
           echo "::set-output name=new_tag::$NEW_TAG"
+      shell: bash
