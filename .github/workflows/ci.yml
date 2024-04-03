@@ -60,7 +60,7 @@ jobs:
       - name: Get latest image tag
         id: get_latest_tag
         run: |
-          TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/your-dockerhub-username/your-repo/tags/?page_size=1" | jq -r '.results[0].name')
+          TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/datnh99/demo-image/tags/?page_size=1" | jq -r '.results[0].name')
           echo "---------: $TAG"
 
 #      - name: Build Docker image
