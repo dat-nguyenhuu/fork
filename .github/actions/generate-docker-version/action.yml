@@ -17,5 +17,5 @@ runs:
           PATCH="${VERSION[2]}"
           NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
           echo "-----------------: $NEW_TAG"
-          echo "::set-output name=new_tag::$NEW_TAG"
+          echo "new-tag=$NEW_TAG" >> $GITHUB_OUTPUT
       shell: bash
