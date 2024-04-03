@@ -21,18 +21,18 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Generate docker image version
-        id: generate-new-tag
-        uses: ./.github/actions/generate-docker-version
+        id: get-docker-version
+        uses: ./.github/actions/get-docker-version
 
       - name: Pull Docker image
         run: |
-          VERSION=${{ steps.generate-new-tag.outputs.new-tag }}
+          VERSION=${{ steps.get-docker-version.outputs.new-tag }}
           docker pull datnh99/demo-image:$VERSION
 
       - name: Deploy to GitHub environment
         id: run_container
         run: |
-          VERSION=${{ steps.generate-new-tag.outputs.new-tag }}
+          VERSION=${{ steps.get-docker-version.outputs.new-tag }}
           docker run -d -p 8080:8080 datnh99/demo-image:$VERSION
 
       - name: Docker container
