@@ -1,0 +1,21 @@
+name: 'Generate docker image version'
+description: 'Generate docker image version'
+outputs:
+  docker-version:
+    description: 'The new docker version'
+    value: ${{ steps.generate-new-tag.outputs.new_tag }}
+    default: 'latest'
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate docker image version
+      id: generate-new-tag
+      run: |
+          LATEST_TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/datnh99/demo-image/tags/?page_size=1" | jq -r '.results[0].name')
+          IFS='.' read -ra VERSION <<< "$LATEST_TAG"
+          MAJOR="${VERSION[0]}"
+          MINOR="${VERSION[1]}"
+          PATCH="${VERSION[2]}"
+          NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
+          echo "-----------------"
+          echo "::set-output name=new_tag::$NEW_TAG"
