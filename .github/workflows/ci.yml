@@ -75,7 +75,7 @@ jobs:
       - name: Build Docker image
         id: build-docker
         run: |
-          VERSION=${{ steps.generate-new-tag.outputs.new_tag }
+          VERSION=${{ steps.generate-new-tag.outputs.new_tag }}
           docker build -t datnh99/demo-image:$VERSION .
 #
 #      - name: Log in to Docker Hub
