@@ -3,7 +3,7 @@ description: 'Generate docker image version'
 outputs:
   new-tag:
     description: 'The new docker version'
-    value: ${{ steps.generate-new-tag.outputs.new_tag }}
+    value: ${{ steps.generate-new-tag.outputs.new-tag }}
 runs:
   using: "composite"
   steps:
