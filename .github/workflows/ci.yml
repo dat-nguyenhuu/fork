@@ -60,8 +60,13 @@ jobs:
       - name: Get latest image tag
         id: get_latest_tag
         run: |
-          TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/datnh99/demo-image/tags/?page_size=1" | jq -r '.results[0].name')
-          echo "---------: $TAG"
+          LATEST_TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/datnh99/demo-image/tags/?page_size=1" | jq -r '.results[0].name')
+          IFS='.' read -ra VERSION <<< "$LATEST_TAG"
+          MAJOR="${VERSION[0]}"
+          MINOR="${VERSION[1]}"
+          PATCH="${VERSION[2]}"
+          NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
+          echo "---------: $NEW_TAG"
 
 #      - name: Build Docker image
 #        id: build-docker
