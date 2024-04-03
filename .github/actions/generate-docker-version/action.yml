@@ -1,7 +1,7 @@
 name: 'Generate docker image version'
 description: 'Generate docker image version'
 outputs:
-  docker-version:
+  new-tag:
     description: 'The new docker version'
     value: ${{ steps.generate-new-tag.outputs.new_tag }}
 runs:
