@@ -10,8 +10,10 @@ runs:
     - name: Generate docker image version
       id: generate-new-tag
       run: |
-          NEW_TAG=latest
           LATEST_TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/datnh99/demo-image/tags/?page_size=1" | jq -r '.results[0].name')
+          if [[ -z "$LATEST_TAG" ]]; then
+            LATEST_TAG="1.0.0"
+          fi
           IFS='.' read -ra VERSION <<< "$LATEST_TAG"
           MAJOR="${VERSION[0]}"
           MINOR="${VERSION[1]}"
