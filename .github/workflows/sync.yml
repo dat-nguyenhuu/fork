@@ -29,4 +29,4 @@ jobs:
           title: 'chore: Update from upstream'
           body: 'This PR updates the fork repo with the latest changes from the upstream repo.'
           branch: 'update-from-upstream'
-          base: 'main-up'
+          base: 'main'
