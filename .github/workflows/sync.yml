@@ -20,6 +20,7 @@ jobs:
           git remote add upstream https://github.com/datnh99/demo
           git fetch upstream
           git checkout main
+          echo "Merge starting: ....."
           git merge upstream/main
 
       - name: Create Pull Request
