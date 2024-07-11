@@ -19,15 +19,8 @@ jobs:
           git config --global user.name "dat-nguyenhuu"
           git remote add upstream https://github.com/datnh99/demo
           git fetch upstream
-          git checkout main
-      - name: Resolve Conflicts
-        run: |
-          git merge upstream/main --no-commit --no-ff
-          
-          # Automatically resolve conflicts by taking all changes from upstream
-          git checkout --theirs .
-          git add .
-          git commit -m "Resolve conflicts by taking upstream changes"
+          git checkout -b main upstream/main
+          echo "Merge starting: ....."
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
