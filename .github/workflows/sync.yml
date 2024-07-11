@@ -19,7 +19,7 @@ jobs:
           git config --global user.name "dat-nguyenhuu"
           git remote add upstream https://github.com/datnh99/demo
           git fetch upstream
-          git checkout -b main upstream/main
+          git checkout -b main-up upstream/main
           echo "Merge starting: ....."
 
       - name: Create Pull Request
@@ -29,4 +29,4 @@ jobs:
           title: 'chore: Update from upstream'
           body: 'This PR updates the fork repo with the latest changes from the upstream repo.'
           branch: 'update-from-upstream'
-          base: 'main'
+          base: 'main-up'
