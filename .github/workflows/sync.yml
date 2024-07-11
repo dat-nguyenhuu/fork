@@ -19,8 +19,9 @@ jobs:
           git config --global user.name "dat-nguyenhuu"
           git remote add upstream https://github.com/datnh99/demo
           git fetch upstream
-          git checkout -b main-up upstream/main
+          git checkout main
           echo "Merge starting: ....."
+          git merge upstream/main
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
