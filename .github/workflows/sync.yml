@@ -20,8 +20,14 @@ jobs:
           git remote add upstream https://github.com/datnh99/demo
           git fetch upstream
           git checkout main
-          echo "Merge starting: ....."
-          git merge upstream/main
+      - name: Resolve Conflicts
+        run: |
+          git merge upstream/main --no-commit --no-ff
+          
+          # Automatically resolve conflicts by taking all changes from upstream
+          git checkout --theirs .
+          git add .
+          git commit -m "Resolve conflicts by taking upstream changes"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
