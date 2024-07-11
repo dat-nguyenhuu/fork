@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: weekly
+      day: wednesday
+      time: "07:00"
+      timezone: Europe/Berlin
+    commit-message:
+      prefix: "build:"
+    open-pull-requests-limit: 1
